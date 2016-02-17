@@ -47,9 +47,6 @@ class HanoiError < StandardError
 end
 
 
-
-
-
 class Array
   def my_uniq
     uniques = []
