@@ -17,6 +17,29 @@ class TowersOfHanoi
     @towers[to].push(disc)
   end
 
+  def won?
+    @towers[1..-1].each do |tower|
+      return true if tower == @full_tower
+    end
+    false
+  end
+
+  def run
+    until won?
+      p @towers
+      take_turn
+    end
+    puts "yay!"
+  end
+
+  def take_turn
+    reply = get_input
+    move_disc(*reply)
+  rescue HanoiError => e
+    puts e.message
+    retry
+  end
+
 end
 
 class HanoiError < StandardError
